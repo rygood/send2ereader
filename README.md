@@ -13,6 +13,15 @@ A self hostable service for sending ebooks to a Kobo or Kindle ereader through t
 5. Install [pdfCropMargins](https://github.com/abarker/pdfCropMargins), and have the pdfcropmargins executable in your PATH.
 6. Start this service by running: `$ npm start` and access it on HTTP port 3001
 
+#### Configuration
+
+Environment variables:
+
+- `HOST` — interface to bind on. Default `127.0.0.1` (localhost only). Set `HOST=0.0.0.0` to expose the service to your LAN so an e-reader on the same network can reach it.
+- `PORT` — port to listen on. Default `3001`.
+
+Example for LAN access: `$ HOST=0.0.0.0 npm start`
+
 ### Containerized
 1. You need [Docker](https://www.docker.com/) and [docker-compose](https://docs.docker.com/compose/) installed
 2. Clone this repo (you need Dockerfile, docker-compose.yaml and package.json in the same directory)

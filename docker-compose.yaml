@@ -8,5 +8,7 @@ services:
     restart: unless-stopped
     # Ports means, Bind external and internal docker ports, only change the external port, not the internal port
     # Format: <External Port>:<Internal Port>
+    environment:
+      HOST: 0.0.0.0
     ports:
       - 3001:3001

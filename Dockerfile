@@ -6,6 +6,7 @@ WORKDIR /usr/src/app
 
 # Download and install kepubify
 RUN wget https://github.com/pgaskin/kepubify/releases/download/v4.0.4/kepubify-linux-64bit && \
+    echo "37d7628d26c5c906f607f24b36f781f306075e7073a6fe7820a751bb60431fc5  kepubify-linux-64bit" | sha256sum -c && \
     mv kepubify-linux-64bit /usr/local/bin/kepubify && \
     chmod +x /usr/local/bin/kepubify
 
