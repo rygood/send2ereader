@@ -1,0 +1,22 @@
+networks:
+  send2ereader:
+    driver: bridge
+
+services:
+  send2ereader:
+    container_name: send2ereader
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        - PUID=${PUID}
+        - PGID=${PGID}
+    restart: unless-stopped
+    networks: [send2ereader]
+    ports:
+      - "3001:3001"
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - HOST=0.0.0.0

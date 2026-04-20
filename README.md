@@ -23,17 +23,18 @@ Environment variables:
 Example for LAN access: `$ HOST=0.0.0.0 npm start`
 
 ### Containerized
-1. You need [Docker](https://www.docker.com/) and [docker-compose](https://docs.docker.com/compose/) installed
-2. Clone this repo (you need Dockerfile, docker-compose.yaml and package.json in the same directory)
-```
-git clone https://github.com/daniel-j/send2ereader.git
-```
-3. Build the image
-```
-docker compose build
-```
-4. run container (-d to keep running in the background)
-```
-docker compose up -d
-```
-5. Access the service on HTTP, default port 3001 (http://localhost:3001)
+
+1. You need [Docker](https://www.docker.com/) and the Compose plugin installed.
+2. Clone this repo:
+   ```
+   git clone https://github.com/rygood/send2ereader.git
+   cd send2ereader
+   ```
+3. Review `.env` — adjust `TZ`, `PUID`, `PGID` to match your host.
+4. Build and start:
+   ```
+   docker compose up -d --build
+   ```
+5. Access the service on http://localhost:3001 (or from any host on the LAN — the container binds `0.0.0.0` and compose maps port `3001:3001`).
+
+The container runs as a non-root user matching `PUID`/`PGID`, on a dedicated `send2ereader` bridge network. Uploads are ephemeral (wiped on container start) and no host volume is mounted by default.
